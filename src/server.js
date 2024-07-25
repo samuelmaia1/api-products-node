@@ -1,5 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
+import {randomUUID} from 'node:crypto'
 import {databaseClient} from './database-config.js'
 
 dotenv.config()
@@ -7,6 +9,16 @@ dotenv.config()
 const port = process.env.PORT
 
 const app = express()
+
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+)
+
+app.use(express.json())
+
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.end(JSON.stringify({
