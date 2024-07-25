@@ -1,8 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import {randomUUID} from 'node:crypto'
-import {databaseClient} from './database-config.js'
+
+import productsRouter from './products/products.js'
 
 dotenv.config()
 
@@ -19,6 +19,8 @@ app.use(
 app.use(express.json())
 
 app.use(cors())
+
+app.use('/products', productsRouter)
 
 app.get('/', (req, res) => {
     return res
