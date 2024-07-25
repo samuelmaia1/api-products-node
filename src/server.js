@@ -24,7 +24,7 @@ app.use('/products', productsRouter)
 
 app.get('/', (req, res) => {
     return res
-    .setHeader('Content-type', 'application-json')
+    .setHeader('Content-type', 'application/json')
     .end(JSON.stringify({
         add_product_url: 'http://localhost:3000/products/new',
         product: 'http://localhost:3000/products/{id}',
